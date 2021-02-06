@@ -1,15 +1,16 @@
 'use strict';
-// window.addEventListener('load', () => { sould i? and why?
-// }
+
 const form = document.form;
 
-// is window.addEventListener('load', () => {	needed?
+// bringing all the needed info from the form
 
 const fName = document.getElementById('fname');
 const lName = document.getElementById('lname');
 const phone = document.getElementById('phone');
 const email = document.getElementById('email'); 
 const emailCon = document.getElementById('emailCon');
+
+//RegEx for the checks
 
 let reEmail = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi ;
 let reNames = /^[a-z ,.'-]+$/i ;
@@ -31,7 +32,7 @@ form.addEventListener('submit', (event) =>{
         isValid = false;
     }
 
-    if (email.value.trim().length === 0) { // even if valid it shows that it's missing
+    if (email.value.trim().length === 0) { // even if valid it used to show that it's missing. I forgot the () in trim so lesson learned
         alert('Email missing');
         isValid = false;
     } 
@@ -39,7 +40,7 @@ form.addEventListener('submit', (event) =>{
         alert('Invalid email address');
         isValid = false;
     }
-    
+     // checking if something is wrong
     if (email.value !== emailCon.value) {
         alert('Emails do not match');
         isValid = false;
@@ -53,7 +54,7 @@ form.addEventListener('submit', (event) =>{
         isValid = false;
     }
     
-    
+    //prevent default if something wrong
 
 
     if (!isValid) event.preventDefault();
